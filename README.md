@@ -4,7 +4,7 @@
 ![:name](https://count.getloli.com/@astrbot_plugin_group_manager?name=astrbot_plugin_group_manager&theme=miku&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
 
 ### Astrbot_Plugin_QQ_Group_Manage
-### 一款全能的 QQ 群管家插件，支持自动同意加群、LLM 智能迎新送辞、以及机器人进群邀请的管理员审核。
+### 一款 QQ 群管家插件，支持自动同意加群、LLM 智能迎新送辞、以及机器人进群邀请的管理员审核。
 
 ***
 > [!note]
