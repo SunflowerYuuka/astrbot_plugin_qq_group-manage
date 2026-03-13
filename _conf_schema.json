@@ -1,13 +1,21 @@
 {
-  "admin_qq": {
-    "description": "管理员 QQ 号",
-    "hint": "用于接收机器人被邀请进群的审核通知。如果有多个管理员，请用英文逗号(,)分隔。",
-    "type": "string",
-    "default": ""
-  },
   "llm_provider_id": {
-    "description": "选择大模型提供商",
+    "description": "主大模型提供商",
     "hint": "留空则使用系统默认提供商。",
+    "type": "string",
+    "default": "",
+    "_special": "select_provider"
+  },
+  "fallback_provider_1": {
+    "description": "备用大模型 1",
+    "hint": "当主模型报错或无余额时，优先尝试此模型。留空则跳过。",
+    "type": "string",
+    "default": "",
+    "_special": "select_provider"
+  },
+  "fallback_provider_2": {
+    "description": "备用大模型 2",
+    "hint": "当备用模型 1 也报错时，尝试此模型。留空则跳过。",
     "type": "string",
     "default": "",
     "_special": "select_provider"
@@ -19,17 +27,28 @@
     "default": "",
     "_special": "select_persona"
   },
+  "admin_qq": {
+    "description": "管理员 QQ 号",
+    "hint": "用于接收机器人被邀请进群的审核通知。如果有多个管理员，请用英文逗号(,)分隔。",
+    "type": "string",
+    "default": ""
+  },
   "auto_approve": {
     "description": "自动同意路人入群申请",
-    "hint": "开启后，如果有路人申请加入机器人管理的群，将自动同意。",
     "type": "bool",
     "default": true
   },
   "invite_prompt": {
-    "description": "邀请进群等待提示词",
-    "hint": "当有人邀请机器人进群时，LLM 将根据此提示词生成安抚消息。可用变量：{user_id}, {group_id}",
+    "description": "邀请进群等待提示词 (LLM)",
+    "hint": "LLM 生成安抚消息的提示词。可用变量：{user_id}, {group_id}",
     "type": "string",
     "default": "我已收到您邀请我加入群聊（群号：{group_id}）的请求，我已经通知我的管理员啦，请耐心等待管理员审核哦~"
+  },
+  "invite_fallback": {
+    "description": "邀请进群备用文本 (兜底)",
+    "hint": "当所有大模型都报错时，直接发送此文本。可用变量：{user_id}, {group_id}",
+    "type": "string",
+    "default": "已通知管理员，请等待审核。"
   },
   "welcome_enable": {
     "description": "开启迎新",
@@ -37,10 +56,16 @@
     "default": true
   },
   "welcome_prompt": {
-    "description": "迎新提示词",
+    "description": "迎新提示词 (LLM)",
     "hint": "可用变量：{user_id}, {group_id}",
     "type": "string",
     "default": "有一个新成员（QQ号：{user_id}）加入了群聊（群号：{group_id}），请你用热情、幽默、简短的话语欢迎他，字数控制在50字以内。"
+  },
+  "welcome_fallback": {
+    "description": "迎新备用文本 (兜底)",
+    "hint": "当所有大模型都报错时，直接发送此文本。可用变量：{user_id}, {group_id}",
+    "type": "string",
+    "default": "欢迎加入群聊！"
   },
   "farewell_enable": {
     "description": "开启送辞",
@@ -48,10 +73,16 @@
     "default": true
   },
   "farewell_prompt": {
-    "description": "送辞提示词",
+    "description": "送辞提示词 (LLM)",
     "hint": "可用变量：{user_id}, {group_id}",
     "type": "string",
     "default": "有一个成员（QQ号：{user_id}）退出了群聊（群号：{group_id}），请你用简短、惋惜的话语告别，字数控制在50字以内。"
+  },
+  "farewell_fallback": {
+    "description": "送辞备用文本 (兜底)",
+    "hint": "当所有大模型都报错时，直接发送此文本。可用变量：{user_id}, {group_id}",
+    "type": "string",
+    "default": "有缘再见。"
   },
   "filter_list_mode": {
     "description": "名单模式",
