@@ -1,14 +1,52 @@
-# astrbot-plugin-helloworld
 
-AstrBot 插件模板 / A template plugin for AstrBot plugin feature
 
-> [!NOTE]
-> This repo is just a template of [AstrBot](https://github.com/AstrBotDevs/AstrBot) Plugin.
-> 
-> [AstrBot](https://github.com/AstrBotDevs/AstrBot) is an agentic assistant for both personal and group conversations. It can be deployed across dozens of mainstream instant messaging platforms, including QQ, Telegram, Feishu, DingTalk, Slack, LINE, Discord, Matrix, etc. In addition, it provides a reliable and extensible conversational AI infrastructure for individuals, developers, and teams. Whether you need a personal AI companion, an intelligent customer support agent, an automation assistant, or an enterprise knowledge base, AstrBot enables you to quickly build AI applications directly within your existing messaging workflows.
 
-# Supports
+![:name](https://count.getloli.com/@astrbot_plugin_group_manager?name=astrbot_plugin_group_manager&theme=miku&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
 
-- [AstrBot Repo](https://github.com/AstrBotDevs/AstrBot)
-- [AstrBot Plugin Development Docs (Chinese)](https://docs.astrbot.app/dev/star/plugin-new.html)
-- [AstrBot Plugin Development Docs (English)](https://docs.astrbot.app/en/dev/star/plugin-new.html)
+### Astrbot_Plugin_QQ_Group_Manage
+### 一款全能的 QQ 群管家插件，支持自动同意加群、LLM 智能迎新送辞、以及机器人进群邀请的管理员审核工作流。
+
+***
+> [!note]
+> 本插件编写环境的AstrBot版本为v4.20.0，建议 AstrBot 版本 >= v4.20.0\
+> 本插件完完全全依靠ai编写，如有问题还请多多包涵
+
+### 命令
+- `/bot_join <审核ID> <同意/拒绝>`
+  - **管理员专属指令**：用于处理机器人被邀请加入新群的请求。
+  - 示例: `/bot_join 123456 同意`
+  - 示例: `/bot_join 654321 拒绝`
+
+### 功能特性
+
+- **智能迎新与送辞**：群成员变动时，自动调用大语言模型（LLM）生成热情或惋惜的专属文案。
+- **深度人格融合**：完美兼容 AstrBot 的人格设定系统，迎新/送辞/安抚消息均可指定特定人格的语气进行回复。
+- **进群邀请审核**：当路人邀请机器人加入新群时，机器人会先安抚邀请者，并向管理员发送审核通知。支持 24 小时超时自动拒绝。
+- **自动同意加群**：可配置自动同意路人加入机器人所在群聊的申请。
+- **黑白名单群管**：支持配置群号黑白名单，精准控制插件在哪些群聊中生效。
+
+### 使用工作流示例
+
+#### 场景一：迎新与送辞
+1. 在 WebUI 中选择一个傲娇人格，并开启迎新功能。
+2. 新人加群。
+3. 机器人自动在群内发送：`@新人 哼，既然你诚心诚意地加群了，那我就勉为其难地欢迎你一下吧！记得看群规哦！`
+
+#### 场景二：邀请机器人进群审核
+1. 路人 A 邀请机器人加入群聊 `999999`。
+2. 机器人私聊路人 A：`我已经通知我的管理员啦，请耐心等待管理员审核哦~`
+3. 管理员的 QQ 收到私聊通知：
+   ```text
+    收到新的进群邀请！
+   群号：999999
+   邀请人：12345678
+   审核ID：884823
+    请回复指令进行审核：
+   /bot_join 884823 同意
+   ```
+4. 管理员发送 `/bot_join 884823 同意`。
+5. 机器人自动同意加群，并私聊通知路人 A：` 您邀请我加入群聊 999999 的请求已被管理员【同意】。`
+
+#### v1.0.0
+- [发布] 插件发布，支持自动同意入群、LLM 迎新与送辞，群聊黑白名单过滤功能，进群邀请的管理员审核。
+```
