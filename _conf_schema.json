@@ -1,0 +1,71 @@
+{
+  "admin_qq": {
+    "description": "管理员 QQ 号",
+    "hint": "用于接收机器人被邀请进群的审核通知。如果有多个管理员，请用英文逗号(,)分隔。",
+    "type": "string",
+    "default": ""
+  },
+  "llm_provider_id": {
+    "description": "选择大模型提供商",
+    "hint": "留空则使用系统默认提供商。",
+    "type": "string",
+    "default": "",
+    "_special": "select_provider"
+  },
+  "llm_persona_id": {
+    "description": "选择专属人格",
+    "hint": "下拉选择用于迎新/送辞/审核提示的人格。留空则不使用特定人格。",
+    "type": "string",
+    "default": "",
+    "_special": "select_persona"
+  },
+  "auto_approve": {
+    "description": "自动同意路人入群申请",
+    "hint": "开启后，如果有路人申请加入机器人管理的群，将自动同意。",
+    "type": "bool",
+    "default": true
+  },
+  "invite_prompt": {
+    "description": "邀请进群等待提示词",
+    "hint": "当有人邀请机器人进群时，LLM 将根据此提示词生成安抚消息。可用变量：{user_id}, {group_id}",
+    "type": "string",
+    "default": "我已收到您邀请我加入群聊（群号：{group_id}）的请求，我已经通知我的管理员啦，请耐心等待管理员审核哦~"
+  },
+  "welcome_enable": {
+    "description": "开启迎新",
+    "type": "bool",
+    "default": true
+  },
+  "welcome_prompt": {
+    "description": "迎新提示词",
+    "hint": "可用变量：{user_id}, {group_id}",
+    "type": "string",
+    "default": "有一个新成员（QQ号：{user_id}）加入了群聊（群号：{group_id}），请你用热情、幽默、简短的话语欢迎他，字数控制在50字以内。"
+  },
+  "farewell_enable": {
+    "description": "开启送辞",
+    "type": "bool",
+    "default": true
+  },
+  "farewell_prompt": {
+    "description": "送辞提示词",
+    "hint": "可用变量：{user_id}, {group_id}",
+    "type": "string",
+    "default": "有一个成员（QQ号：{user_id}）退出了群聊（群号：{group_id}），请你用简短、惋惜的话语告别，字数控制在50字以内。"
+  },
+  "filter_list_mode": {
+    "description": "名单模式",
+    "type": "string",
+    "default": "黑名单",
+    "options": [
+      "黑名单",
+      "白名单"
+    ]
+  },
+  "filter_group_list": {
+    "description": "群号列表",
+    "hint": "填写群号，按回车添加。",
+    "type": "list",
+    "default": []
+  }
+}
